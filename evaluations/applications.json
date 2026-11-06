@@ -7,25 +7,46 @@
   "applications": [
     {
       "target": "SPECFEM2D",
-      "status": "in_progress",
+      "status": "validated",
       "frozen_packet_verified_before_source_inspection": true,
-      "application_repository": "DiffSPECFEM",
+      "application_repository": "https://github.com/Wangxi404/DiffSPECFEM",
       "upstream_url": "https://github.com/SPECFEM/specfem2d.git",
       "pre_integrity": "passed",
-      "agent_context": "fresh independent context, operative frozen packet only"
+      "application_commit": "40ae10aba84f05c6717a2a9d0cac4408c7a52eb4",
+      "application_tag": "v0.1.0",
+      "upstream_commit": "abf3196e3192af3343f2b402c82f34205577e672",
+      "post_integrity": "passed; original seven-file hash",
+      "initial_context": "fresh source-and-frozen-packet application context, separate from private adaptations",
+      "review_inputs": "target-specific independent source/raw artifact audit; sampling-test repair and MPI/physical-resolution scope extension recorded in application_record.json",
+      "supported_scope": "planar isotropic SH/Newmark; fixed mesh/source/receivers/dt; four two-region log-rho/log-Vs coordinates; CPU ranks1/2; full u/a history",
+      "cases": [
+        "8x8 elements, rank1",
+        "8x8 elements, rank2",
+        "32x32 elements, rank2; within native source-frequency/timestep recommendations"
+      ],
+      "native_forward": "bitwise identical to separately retained native baseline per tested case",
+      "data_objectives": [
+        "L2",
+        "FIR + tanh + receiver mixing + time weights"
+      ],
+      "model_adjoint_dot_max_relative_error": 1.215113407858079e-09,
+      "model_taylor": "all separate rho/Vs/mixed multi-epsilon sweeps passed",
+      "full_history_policy": "no temporal AD, production parameter FD or replay; history scales with steps/mesh",
+      "audit": "reviews/native-adapter-audit-specfem.md",
+      "report": "https://github.com/Wangxi404/DiffSPECFEM/blob/v0.1.0/REPORT.md"
     },
     {
       "target": "AxiSEM3D",
-      "status": "in_progress",
+      "status": "history-identity repair and final validation in progress",
       "frozen_packet_verified_before_source_inspection": true,
       "application_repository": "DiffAxiSEM3D",
       "upstream_url": "https://github.com/AxiSEMunity/AxiSEM3D.git",
       "upstream_commit": "bc67bb2d76deb2fb208d14dff7b7b25c57d9f35f",
       "pre_integrity": "passed",
-      "agent_context": "fresh independent context, operative frozen packet only"
+      "initial_context": "fresh independent context, operative frozen packet only"
     }
   ],
   "author_familiarity": "See development_protocol.json; not an author-blinded evaluation.",
   "freeze_git_commit": "89d135f75f3d8521737645cab2e0c6ec49136f91",
-  "last_updated_utc": "2026-11-06T16:39:43.156351+00:00"
+  "last_updated_utc": "2026-11-06T17:19:32.714364+00:00"
 }

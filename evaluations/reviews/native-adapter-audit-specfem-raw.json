@@ -1,0 +1,137 @@
+{
+  "1": {
+    "l2": {
+      "objective_abs_error": 0.0,
+      "independent_cotangent_relative_l2": 0.0,
+      "independent_cotangent_linf": 0.0,
+      "file_cotangent_exact": true,
+      "raw_kernel_files_exact": true,
+      "element_rows": 1600,
+      "raw_vjp_exact": true,
+      "traces_exact": true,
+      "norm_data": 0.010289524635616693,
+      "norm_cot": 0.002800366615044459,
+      "norm_raw_kernel": 1.1272873366474084e-08
+    },
+    "processed": {
+      "objective_abs_error": 0.0,
+      "independent_cotangent_relative_l2": 4.744372575859506e-16,
+      "independent_cotangent_linf": 6.938893903907228e-16,
+      "file_cotangent_exact": true,
+      "raw_kernel_files_exact": true,
+      "element_rows": 1600,
+      "raw_vjp_exact": true,
+      "traces_exact": true,
+      "norm_data": 0.010289524635616693,
+      "norm_cot": 7.745578726630092,
+      "norm_raw_kernel": 2.7787638104650526e-05
+    },
+    "sampling_dot": {
+      "lhs": -0.4571596871810874,
+      "rhs": -0.45715968718108724,
+      "relative_error": 3.6427851878332227e-16
+    },
+    "history": {
+      "files": [
+        {
+          "path": "DiffSPECFEM/evidence/gradient_l2/OUTPUT_FILES/ds_history.bin",
+          "header": [
+            1089,
+            800,
+            4
+          ],
+          "bytes": 13939212,
+          "sha256": "faba0cdc45f0cf10cd1a6bd513212c10a773043a0a06f2fa5e9ff6e934a40a0a",
+          "u_norm": 0.14014529243156004,
+          "acceleration_norm": 219.72856628728445
+        }
+      ],
+      "sampling_absolute_linf": 2.168404344971009e-19,
+      "sampling_relative_l2": 1.415001158831737e-16
+    },
+    "baseline_vs_extension_exact": true,
+    "baseline_norm": 0.010289524635616693
+  },
+  "2": {
+    "l2": {
+      "objective_abs_error": 8.470329472543003e-22,
+      "independent_cotangent_relative_l2": 0.0,
+      "independent_cotangent_linf": 0.0,
+      "file_cotangent_exact": true,
+      "raw_kernel_files_exact": true,
+      "element_rows": 1600,
+      "raw_vjp_exact": true,
+      "traces_exact": true,
+      "norm_data": 0.010289524635616696,
+      "norm_cot": 0.002800366615044456,
+      "norm_raw_kernel": 1.127287336647407e-08
+    },
+    "processed": {
+      "objective_abs_error": 0.0,
+      "independent_cotangent_relative_l2": 4.569215259184681e-16,
+      "independent_cotangent_linf": 4.163336342344337e-16,
+      "file_cotangent_exact": true,
+      "raw_kernel_files_exact": true,
+      "element_rows": 1600,
+      "raw_vjp_exact": true,
+      "traces_exact": true,
+      "norm_data": 0.010289524635616696,
+      "norm_cot": 7.745578726630078,
+      "norm_raw_kernel": 2.77876381046505e-05
+    },
+    "sampling_dot": {
+      "lhs": -0.45715968718108735,
+      "rhs": -0.4571596871810874,
+      "relative_error": 1.2142617292777408e-16
+    },
+    "baseline_vs_extension_exact": true,
+    "native_reference_saved_exact": true,
+    "history": {
+      "files": [
+        {
+          "path": "DiffSPECFEM/evidence/mpi2/gradient_l2/OUTPUT_FILES/ds_rank000000_history.bin",
+          "header": [
+            565,
+            800,
+            1
+          ],
+          "bytes": 7232012,
+          "sha256": "8f77bdf5cdfbfa364746643dbb5e31f9e0d566d93558b2382d55de3663af015b",
+          "u_norm": 0.08119696075441504,
+          "acceleration_norm": 122.49658809665526
+        },
+        {
+          "path": "DiffSPECFEM/evidence/mpi2/gradient_l2/OUTPUT_FILES/ds_rank000001_history.bin",
+          "header": [
+            565,
+            800,
+            3
+          ],
+          "bytes": 7232012,
+          "sha256": "4ad0bd0b62beeb1e5beabc30f085bcc9f49bc07c0585a499860903187e724609",
+          "u_norm": 0.11920338848899968,
+          "acceleration_norm": 189.88901960656244
+        }
+      ],
+      "sampling_absolute_linf": 2.168404344971009e-19,
+      "sampling_relative_l2": 1.3927187674616363e-16
+    },
+    "baseline_norm": 0.010289524635616696,
+    "shared_node_history": {
+      "shared_nodes": 41,
+      "u_acceleration_max_abs_difference": 0.0
+    }
+  },
+  "serial_vs_mpi": {
+    "l2": {
+      "data": 1.6724562992534262e-15,
+      "cotangent": 7.514308441825672e-15,
+      "gradient": 1.0294872330844306e-15
+    },
+    "processed": {
+      "data": 1.6724562992534262e-15,
+      "cotangent": 7.104557866770904e-15,
+      "gradient": 1.7575943103542301e-15
+    }
+  }
+}

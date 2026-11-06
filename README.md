@@ -16,7 +16,11 @@ Copy `releases/v0.1.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, 
 
 ## Validation status
 
-The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture. Native SPECFEM2D and AxiSEM3D applications have begun from clean pinned public source after the freeze; they are **not yet validated**. Their status and complete reports will be linked in `evaluations/applications.json`. HybridADFWI is a separate full-AD comparison, not a skill target.
+The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture.
+
+[DiffSPECFEM](https://github.com/Wangxi404/DiffSPECFEM) is now validated and published: native SH/Newmark, four regional log-density/log-Vs coordinates, one/two MPI ranks, with a32x32 two-rank physical-resolution supplement. Original-native/extension outputs are bitwise identical; actual native sampling, processed AD sources, raw GLL kernels and multi-epsilon model checks passed independent raw-artifact audit.
+
+AxiSEM3D application is still in progress. A refined-mesh test exposed changing MPI partitions between forward and adjoint initialization; global-tag history remapping is being repaired and revalidated. No final AxiSEM3D acceptance is claimed yet. Full provenance/status/reviews are recorded in `evaluations/applications.json` and `evaluations/reviews/`. Target-specific review/repair inputs are recorded separately from the immutable operative packet. HybridADFWI is a separate full-AD comparison, not a skill target.
 
 ## Comparison implementation
 

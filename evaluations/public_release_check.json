@@ -5,5 +5,16 @@
   "archive_sha256": "1b8c0159743f6b3fd99368eceda9a805a48c1e48703a9fdfdf3630b46226e0a1",
   "packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
   "files": 7,
-  "passed": true
+  "passed": true,
+  "linux_ci": {
+    "url": "https://github.com/Wangxi404/SeismicDiffSkill/actions/runs/42256416046",
+    "conclusion": "success",
+    "commit": "8184d0093683c6b957a1db7ba9d2e82d289c6f08",
+    "runner": "ubuntu-24.04",
+    "python": "3.11",
+    "checks": [
+      "26 NumPy/pytest utility tests",
+      "complete frozen packet hash verification"
+    ]
+  }
 }
