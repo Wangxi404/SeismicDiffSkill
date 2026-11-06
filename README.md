@@ -13,3 +13,7 @@ Run development checks with `python -m pytest -q`. Skill format is also checked 
 ## Install the frozen skill
 
 Copy `releases/v0.1.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, or link that directory. The frozen packet includes its own MIT license. Verify it with `python tools/freeze.py verify releases/v0.1.0 --expected-sha256 b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f`.
+
+## Validation status
+
+The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture. Native SPECFEM2D and AxiSEM3D applications have begun from clean pinned public source after the freeze; they are **not yet validated**. Their status and complete reports will be linked in `evaluations/applications.json`. HybridADFWI is a separate full-AD comparison, not a skill target.
