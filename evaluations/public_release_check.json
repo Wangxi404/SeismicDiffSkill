@@ -1,0 +1,9 @@
+{
+  "checked_utc": "2026-11-06T16:41:44.648402+00:00",
+  "release_url": "https://github.com/Wangxi404/SeismicDiffSkill/releases/tag/v0.1.0",
+  "method": "gh release download of skill.tar and manifest.json; independently hash every regular archive member and compare canonical inventory",
+  "archive_sha256": "1b8c0159743f6b3fd99368eceda9a805a48c1e48703a9fdfdf3630b46226e0a1",
+  "packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "files": 7,
+  "passed": true
+}

@@ -17,3 +17,7 @@ Copy `releases/v0.1.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, 
 ## Validation status
 
 The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture. Native SPECFEM2D and AxiSEM3D applications have begun from clean pinned public source after the freeze; they are **not yet validated**. Their status and complete reports will be linked in `evaluations/applications.json`. HybridADFWI is a separate full-AD comparison, not a skill target.
+
+## Comparison implementation
+
+[HybridADFWI](https://github.com/Wangxi404/HybridADFWI-Open) is published separately with correctness tests, matched full-AD/adjoint measurements and raw kernel evidence. It is a comparison for an already differentiable solver, not an application of this frozen skill. The original private development repository and unpublished manuscript are kept separate from the clean public export.
