@@ -1,0 +1,4 @@
+interface:
+  display_name: "Differentiate Seismic Solver"
+  short_description: "Add validated adjoint-backed solver gradients"
+  default_prompt: "Use $differentiate-seismic-solver to add and verify a differentiable inversion interface around this existing native seismic solver."
