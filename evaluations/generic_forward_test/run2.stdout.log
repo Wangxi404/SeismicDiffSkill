@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "test_count": 42,
+  "failed": [],
+  "timings_seconds": {
+    "native_forward_no_history": 1.7237910000000854e-05,
+    "native_forward_full_history": 1.8037500000001038e-05,
+    "extended_forward_full_history": 1.824915999999899e-05,
+    "native_adjoint": 5.487584000000156e-05,
+    "complete_objective_gradient_processed_c2": 0.00034976249999999485
+  },
+  "results": "/private/tmp/seismic-skill-forward-test/results.json"
+}

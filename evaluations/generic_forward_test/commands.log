@@ -1,0 +1,22 @@
+# Exact operative commands; generated files contain full source/configuration.
+# Read only: skill/SKILL.md, references/derivative-contract.md,
+# references/numerical-acceptance.md, references/application-record.md,
+# scripts/numerics.py, and supplied native_wave.cpp.
+mkdir -p /private/tmp/seismic-skill-forward-test
+/Users/sid/anaconda3/envs/torch27-py39/bin/python /Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/tools/freeze.py verify /Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/work/behaviour-candidate --expected-sha256 b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f
+/Users/sid/anaconda3/envs/torch27-py39/bin/python -c 'import torch,numpy,sys;print(sys.version);print(torch.__version__);print(numpy.__version__)'
+clang++ --version
+shasum -a 256 /Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/tests/fixtures/native_wave.cpp
+cp /Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/tests/fixtures/native_wave.cpp /private/tmp/seismic-skill-forward-test/native_wave.cpp
+/private/tmp/seismic-skill-forward-test/build.sh
+/Users/sid/anaconda3/envs/torch27-py39/bin/python /private/tmp/seismic-skill-forward-test/run_tests.py > /private/tmp/seismic-skill-forward-test/run1.stdout.log 2> /private/tmp/seismic-skill-forward-test/run1.stderr.log
+# Exit 1. Retain first failed report and raw arrays before repair.
+cp /private/tmp/seismic-skill-forward-test/results.json /private/tmp/seismic-skill-forward-test/results.run1.failed.json
+cp /private/tmp/seismic-skill-forward-test/raw_arrays.npz /private/tmp/seismic-skill-forward-test/raw_arrays.run1.npz
+# Repair: only extend FD-JVP checker steps (1e-3,1e-4,1e-5) with 1e-6.
+/Users/sid/anaconda3/envs/torch27-py39/bin/python /private/tmp/seismic-skill-forward-test/run_tests.py > /private/tmp/seismic-skill-forward-test/run2.stdout.log 2> /private/tmp/seismic-skill-forward-test/run2.stderr.log
+# Exit 0, 42 gates. Bundle unchanged helper and add fixed-endpoint gate.
+cp /Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/work/behaviour-candidate/skill/scripts/numerics.py /private/tmp/seismic-skill-forward-test/numerics.py
+/private/tmp/seismic-skill-forward-test/reproduce.sh
+# Exit 0, 43 gates, pre/post frozen integrity passed. Script contains all exact
+# build, execution, integrity and result-finalization commands.

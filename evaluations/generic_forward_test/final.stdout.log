@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "test_count": 43,
+  "failed": [],
+  "timings_seconds": {
+    "native_forward_no_history": 1.559415999999869e-05,
+    "native_forward_full_history": 1.781833999999982e-05,
+    "extended_forward_full_history": 1.8261669999999342e-05,
+    "native_adjoint": 5.47641600000004e-05,
+    "complete_objective_gradient_processed_c2": 0.0003405125000000009
+  },
+  "results": "/Users/sid/seismo/ADInversion/hybridAD/SeismicDiffSkill/evaluations/generic_forward_test/results.json"
+}

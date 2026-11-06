@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "skill_name": "differentiate-seismic-solver",
+  "version": "0.1.0",
+  "created_utc": "2026-11-06T16:36:24.554834+00:00",
+  "packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 1060,
+      "sha256": "8dccc2ed406daefaa2cbf6747c0dc1f70596a918c220722a87618c35827d6585"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 5655,
+      "sha256": "ca15169bb7b716efd5c63260448b23ae57bbe27cea9313c2e88a752430fb46f9"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 280,
+      "sha256": "68a9548b4fac66cd86cb761393a3258bcb88a7db26e30c05cb252c1e7b5606e8"
+    },
+    {
+      "path": "references/application-record.md",
+      "bytes": 1861,
+      "sha256": "97b42f628097e36c0a6ab7a5b27988fe74a64ea461eab20674c6253c9c7212c8"
+    },
+    {
+      "path": "references/derivative-contract.md",
+      "bytes": 3984,
+      "sha256": "405c3e0d94c8d80ad5327bc11a6e8b1c6f8674c19407556ceebe2dab8a5d768a"
+    },
+    {
+      "path": "references/numerical-acceptance.md",
+      "bytes": 4360,
+      "sha256": "b2e95784b7974ab406fe37334eb3b084146f3b812409fb2f2183ea35da9c818f"
+    },
+    {
+      "path": "scripts/numerics.py",
+      "bytes": 12155,
+      "sha256": "ad8e5ef78da730d41dbe97a8e7ea7514204b055ebc870c6ff34638317cf825f8"
+    }
+  ],
+  "generated_paths_excluded": [
+    ".DS_Store",
+    ".pytest_cache",
+    "__pycache__"
+  ]
+}

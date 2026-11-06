@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "frozen_release": "v0.1.0",
+  "freeze_created_utc": "2026-11-06T16:36:24.554834+00:00",
+  "packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "development_behavior_test": "generic_forward_test/results.json",
+  "applications": [
+    {
+      "target": "SPECFEM2D",
+      "status": "not_started",
+      "frozen_packet_verified_before_source_inspection": true
+    },
+    {
+      "target": "AxiSEM3D",
+      "status": "not_started",
+      "frozen_packet_verified_before_source_inspection": true
+    }
+  ],
+  "author_familiarity": "See development_protocol.json; not an author-blinded evaluation."
+}

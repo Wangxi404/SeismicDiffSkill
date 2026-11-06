@@ -1,0 +1,11 @@
+{
+  "scope": "Pre-freeze generic development only",
+  "comparison_reference": "HybridADFWI is a separate already-differentiable-framework comparison, not a skill adaptation target",
+  "behaviour_fixture": "tests/fixtures/native_wave.cpp",
+  "fixture_sha256": "07bf9bfa81994d2f08febcfaf5a586210ddd1d9f01012e38a5b22eab77afe578",
+  "candidate_packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "target_source_inspection_before_freeze": false,
+  "held_out_application_policy": "Fresh agent contexts, clean pinned upstream sources, same final frozen packet; target-specific repairs logged, no silent packet edits",
+  "resource_policy": "Shared existing host: small CPU/MPI tests, one build job, low priority, no interruption of existing jobs; GPU only when idle if needed",
+  "prior_familiarity": "The controller and authors previously discussed the named solver families and an older private adaptation exists elsewhere. This is not claimed to be blinded or unseen to the authors. Fresh application agents will receive only the frozen generic packet and clean upstream sources, not the existing adaptation."
+}
