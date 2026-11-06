@@ -1,0 +1,30 @@
+{
+  "l2": {
+    "objective_abs_error": 1.734723475976807e-18,
+    "independent_data_vjp_relative_l2": 5.735238495684169e-17,
+    "file_cotangent_exact": true,
+    "native_gradient_file_exact": true,
+    "native_data_file_exact": true,
+    "raw_model_dot_relative_error": 2.781508699211249e-07,
+    "raw_taylor_native_forward_outputs_checked": 48,
+    "max_reported_taylor_objective_abs_error": 3.469446951953614e-18
+  },
+  "processed": {
+    "objective_abs_error": 0.0,
+    "independent_data_vjp_relative_l2": 5.892380171592014e-16,
+    "file_cotangent_exact": true,
+    "native_gradient_file_exact": true,
+    "native_data_file_exact": true,
+    "raw_model_dot_relative_error": 2.781508699211249e-07,
+    "raw_taylor_native_forward_outputs_checked": 48,
+    "max_reported_taylor_objective_abs_error": 1.734723475976807e-18
+  },
+  "native_baseline": {
+    "native_waveform_norms": {
+      "stations/station_1/DD.R1.ascii": 0.002022864657881483,
+      "stations/station_1/DD.R2.ascii": 0.0007154504747201945,
+      "stations/station_1/DD.R3.ascii": 0.0007760450740548918
+    },
+    "bitwise_all": true
+  }
+}

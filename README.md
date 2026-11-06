@@ -18,9 +18,11 @@ Copy `releases/v0.1.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, 
 
 The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture.
 
-[DiffSPECFEM](https://github.com/Wangxi404/DiffSPECFEM) is now validated and published: native SH/Newmark, four regional log-density/log-Vs coordinates, one/two MPI ranks, with a32x32 two-rank physical-resolution supplement. Original-native/extension outputs are bitwise identical; actual native sampling, processed AD sources, raw GLL kernels and multi-epsilon model checks passed independent raw-artifact audit.
+[DiffSPECFEM](https://github.com/Wangxi404/DiffSPECFEM) is now validated and published: native SH/Newmark, four regional log-density/log-Vs coordinates, one/two MPI ranks, with an additional 32x32 mesh tested on two MPI ranks. Original and extended native outputs are bitwise identical; actual native sampling, processed AD sources, raw GLL kernels and multi-epsilon model checks passed independent raw-artifact audit.
 
-AxiSEM3D application is still in progress. A refined-mesh test exposed changing MPI partitions between forward and adjoint initialization; global-tag history remapping is being repaired and revalidated. No final AxiSEM3D acceptance is claimed yet. Full provenance/status/reviews are recorded in `evaluations/applications.json` and `evaluations/reviews/`. Target-specific review/repair inputs are recorded separately from the immutable operative packet. HybridADFWI is a separate full-AD comparison, not a skill target.
+[DiffAxiSEM3D](https://github.com/Wangxi404/DiffAxiSEM3D) is validated and published: native Nr=1/m=0 solid, two layer factors scaling lambda/mu together, one/two MPI ranks, plus a 16x16 refinement case. Actual changed forward/adjoint partitions are handled by global-tag history remapping. Full L2/processed objective, model/propagation/sampling dot/Taylor checks and an outer PyTorch parameter map passed independent raw/history audit. Refined strict native-forward preservation uses a separately labelled matched NR-partition control; production derivatives keep COST partitioning.
+
+These are bounded native derivative validations, not all-physics or continuum-convergence claims. Both applications used the exact same frozen packet. Their failed attempts, target-specific reviews/repairs, source pins, parameter coordinates and complete reports are recorded in `evaluations/applications.json` and `evaluations/reviews/`. HybridADFWI is a separate full-AD comparison, not a skill target.
 
 ## Comparison implementation
 

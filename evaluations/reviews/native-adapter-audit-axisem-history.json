@@ -1,0 +1,75 @@
+{
+  "validation-ranks1": {
+    "history": [
+      {
+        "rank": 0,
+        "bytes": 5382336,
+        "forward_ndof": 867,
+        "adjoint_ndof": 867,
+        "tag_order_changed": false,
+        "global_C_rows_equal": true,
+        "sha256": "be1af051edc45b108f276264eb7d1beafcc136e0392c3f56b66ab75aed7f050b"
+      }
+    ],
+    "sampling_relative_l2": 0.0,
+    "sampling_abs_linf": 0.0
+  },
+  "validation-ranks2": {
+    "history": [
+      {
+        "rank": 0,
+        "bytes": 2849472,
+        "forward_ndof": 459,
+        "adjoint_ndof": 459,
+        "tag_order_changed": false,
+        "global_C_rows_equal": true,
+        "sha256": "f9ed99cef1f8ef26cfe53ffc11aa07d70c27b18726ad1e026521115d162dce97"
+      },
+      {
+        "rank": 1,
+        "bytes": 2849472,
+        "forward_ndof": 459,
+        "adjoint_ndof": 459,
+        "tag_order_changed": false,
+        "global_C_rows_equal": true,
+        "sha256": "322c32f15da4a30f11f66c899d7dc46fa1b055dea6562e4a4825cc13c06a161f"
+      }
+    ],
+    "sampling_relative_l2": 0.0,
+    "sampling_abs_linf": 0.0,
+    "shared_points": 17,
+    "shared_u_max_abs_difference": 0.0
+  },
+  "refined-ranks2-independent-remote": {
+    "history": [
+      {
+        "rank": 0,
+        "bytes": 40097472,
+        "points": 2153,
+        "sha256": "ebf5c5dbb98aa2f88a3709766777a43c555905d8a82336e040f2057e30ff1195"
+      },
+      {
+        "rank": 1,
+        "bytes": 40693440,
+        "points": 2185,
+        "sha256": "826a30014a07d8c8eebe6adb2491f9365a0e68119df67fe8fab79c9b409b3033"
+      }
+    ],
+    "forward_dofs": [
+      6459,
+      6555
+    ],
+    "adjoint_dofs": [
+      6303,
+      6699
+    ],
+    "both_local_tag_orders_changed": true,
+    "global_tag_sets_identical": true,
+    "global_unique_points": 4225,
+    "global_C_rows_identical": true,
+    "sampling_abs_linf": 0.0,
+    "sampling_relative_l2": 0.0,
+    "shared_forward_points": 113,
+    "shared_forward_u_max_abs_difference": 0.0
+  }
+}

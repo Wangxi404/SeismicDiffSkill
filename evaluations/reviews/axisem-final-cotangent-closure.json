@@ -1,0 +1,25 @@
+{
+  "method": "Root checked final small native binary files after their last sync; no solver or AD rerun",
+  "results": {
+    "validation-ranks1/l2": {
+      "native_binary_cotangent_equals_saved_actual_AD_array": true,
+      "bytes": 93120
+    },
+    "validation-ranks1/processed": {
+      "native_binary_cotangent_equals_saved_actual_AD_array": true,
+      "bytes": 93120
+    },
+    "validation-ranks2/l2": {
+      "native_binary_cotangent_equals_saved_actual_AD_array": true,
+      "bytes": 93120
+    },
+    "validation-ranks2/processed": {
+      "native_binary_cotangent_equals_saved_actual_AD_array": true,
+      "bytes": 93120
+    },
+    "refined-ranks2/processed": {
+      "native_binary_cotangent_equals_saved_actual_AD_array": true,
+      "bytes": 93120
+    }
+  }
+}

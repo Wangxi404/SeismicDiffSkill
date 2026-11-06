@@ -37,16 +37,37 @@
     },
     {
       "target": "AxiSEM3D",
-      "status": "history-identity repair and final validation in progress",
+      "status": "validated",
       "frozen_packet_verified_before_source_inspection": true,
-      "application_repository": "DiffAxiSEM3D",
+      "application_repository": "https://github.com/Wangxi404/DiffAxiSEM3D",
       "upstream_url": "https://github.com/AxiSEMunity/AxiSEM3D.git",
       "upstream_commit": "bc67bb2d76deb2fb208d14dff7b7b25c57d9f35f",
       "pre_integrity": "passed",
-      "initial_context": "fresh independent context, operative frozen packet only"
+      "initial_context": "fresh independent context, operative frozen packet only",
+      "application_commit": "10d945b2c96fad0b269016b3d8d073567d11cb26",
+      "application_tag": "v0.1.0",
+      "post_integrity": "passed; original seven-file hash",
+      "review_inputs": "independent numerical/packaging audits; history remap repair; MPI/refined scope extension all recorded in target development log",
+      "supported_scope": "Nr=1/m=0 isotropic solid, Cartesian; fixed density/mesh/source/dt; two layer factors scaling lambda and mu together; custom weighted point sampling; CPU ranks1/2",
+      "cases": [
+        "4x4 elements rank1 full L2/processed suite",
+        "4x4 elements rank2 full L2/processed suite",
+        "16x16 elements rank2 processed suite and native forward control"
+      ],
+      "native_forward": "base station outputs bitwise identical; refined exact preservation uses separately labelled native NR-partition control; derivatives retain timing-based COST partitioning",
+      "history_repartition": "global-tag remap verified for actual changed forward/adjoint rank layouts",
+      "data_objectives": [
+        "L2",
+        "FIR + mixing + tanh + time differences + rFFT log energy"
+      ],
+      "model_taylor": "all separate lower/upper/mixed multi-epsilon sweeps passed",
+      "audit": "reviews/native-adapter-audit-axisem.md",
+      "report": "https://github.com/Wangxi404/DiffAxiSEM3D/blob/v0.1.0/records/validation-report.md",
+      "limits": "initial restricted interface; no general 3D/Fourier, independent Vp/Vs/rho, GPU, continuum-convergence or universal-effort claim",
+      "model_adjoint_dot_max_relative_error": 6.13127330882081e-08
     }
   ],
   "author_familiarity": "See development_protocol.json; not an author-blinded evaluation.",
   "freeze_git_commit": "89d135f75f3d8521737645cab2e0c6ec49136f91",
-  "last_updated_utc": "2026-11-06T17:19:32.714364+00:00"
+  "last_updated_utc": "2026-11-06T17:37:47.042402+00:00"
 }
