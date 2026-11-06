@@ -8,7 +8,7 @@ Development uses general numerical fixtures and lessons from the separate Hybrid
 
 This repository's synthetic compiled fixture tests the workflow itself. It is not a substitute for a real HPC solver validation or a performance benchmark. A published numerical claim requires its actual native build, configuration and raw verification record.
 
-Run development checks with `python -m pytest -q`. Skill format is also checked with Codex's `skill-creator/scripts/quick_validate.py`. Freeze/verify tooling lives in `tools/` and never silently overwrites an existing frozen version.
+Install utility-test dependencies with `python -m pip install -r requirements-dev.txt`, then run `python -m pytest tests -q`. The compiled development application additionally needs a C++17 compiler and PyTorch; run `PYTHON=/path/to/torch-python evaluations/generic_forward_test/reproduce.sh`. Skill format is also checked with Codex's `skill-creator/scripts/quick_validate.py`. Freeze/verify tooling lives in `tools/` and never silently overwrites an existing frozen version.
 
 ## Install the frozen skill
 
