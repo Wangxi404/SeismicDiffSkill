@@ -1,0 +1,24 @@
+{
+  "scope": "isolated plotting-only forward test of frozen candidate",
+  "failures": [],
+  "warnings": [
+    {
+      "attempt": "initial render",
+      "message": "Fontconfig error: No writable cache directories; Matplotlib is building the font cache",
+      "context": "MPLCONFIGDIR was writable, but fontconfig's separate cache was not explicitly redirected",
+      "effect": "All seven PNG/PDF/SVG plates and one GIF rendered successfully; no font substitution issue found in PNG inspection.",
+      "repair": "Reproduction command sets XDG_CACHE_HOME to a writable report-local cache"
+    },
+    {
+      "attempt": "initial automated canvas bounds audit",
+      "message": "48 out-of-canvas text objects flagged",
+      "resolution": "PNG inspection showed no clipping; flagged objects were off-domain locator ticks that Matplotlib suppresses during drawing. Audit repaired to exclude those undrawn tick objects; initial report retained.",
+      "skill_change": false
+    }
+  ],
+  "implementation_choices": [
+    "Custom NumPy/Matplotlib/Pillow source chosen for genuine 1D line-state animation and exact native geometry.",
+    "The optional portable helper was read; no changes made and no common export schema imposed.",
+    "No solver, AD, network, GPU, dependency installation or native build performed."
+  ]
+}

@@ -1,0 +1,1001 @@
+{
+  "schema": 1,
+  "test_scope": "forward application of frozen visual skill",
+  "candidate_packet_sha256": "51b19130b19625fb074f76db5165e6517d662a61079723e0381d62bfb96f947a",
+  "input_files": {
+    "raw_arrays.npz": {
+      "sha256": "4377c34fd2b56ca54a2218acf210b0e1ebb1f619cf034d46106cff4c61f02191"
+    },
+    "results.json": {
+      "sha256": "c858610f9bd3928a0f4031b4dc61a32d996fc6327e38a4e8f9daa549d09dc1b7"
+    },
+    "CONTRACT.md": {
+      "sha256": "29a8ceb151e6f03874083767495d3b11708fa0d05daad44495df645b78bd7130"
+    }
+  },
+  "historical_numerics_packet": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "source": {
+    "path": "tests/fixtures/native_wave.cpp",
+    "sha256": "07bf9bfa81994d2f08febcfaf5a586210ddd1d9f01012e38a5b22eab77afe578",
+    "source_modified": false
+  },
+  "runtime": {
+    "python": "3.9.25",
+    "numpy": "2.0.2",
+    "matplotlib": "3.9.4"
+  },
+  "configuration": {
+    "physics": "1D scalar wave; native fixed-zero boundaries; fixed nonuniform damping",
+    "nx": 43,
+    "nt": 150,
+    "dt": 0.3,
+    "dx": 1.0,
+    "coordinates": "x_i=i*dx; full node range 0..42",
+    "units": "nondimensional simulation units; L and T are arbitrary consistent length/time scales",
+    "component": "scalar displacement u",
+    "rank": "serial CPU, no MPI replicas",
+    "history_time": "u[n] at n*dt; includes zero initial state",
+    "trace_time": "d[t,r]=u[t+1, receiver[r]] at (t+1)*dt",
+    "source_index": 17,
+    "source_index_basis": "sole nonzero native state at first update equals source[0]",
+    "source_convention": "direct displacement increment after damping, no dt^2 factor",
+    "receiver_indices": [
+      0,
+      1,
+      5,
+      12,
+      12,
+      22,
+      35,
+      41,
+      42
+    ],
+    "repeated_receiver_channels_retained": true,
+    "parameter_vector": "model_c2, model_velocity or log(model_velocity), as indicated",
+    "fixed_parameters": [
+      "damping",
+      "source",
+      "source_index",
+      "receivers",
+      "dt",
+      "dx",
+      "initial_states",
+      "boundaries"
+    ],
+    "initial_model_generation": "not specified in supplied artifacts; no smoothing claimed"
+  },
+  "source_fidelity_checks": {
+    "post_update_trace_bitwise_match": true,
+    "native_extended_trace_bitwise_match": true,
+    "l2_cotangent_residual_bitwise_match": true,
+    "initial_state_zero": true,
+    "fixed_endpoints_zero": true,
+    "saved_recurrence_absolute_linf": 1.1102230246251565e-16,
+    "l2_objective_from_raw": 5.947819465134297,
+    "recorded_l2_objective": 5.947819465134299
+  },
+  "transforms": [
+    "x and times constructed using supplied dt/dx",
+    "target-start velocity difference",
+    "prediction-observed residual",
+    "saved processed cotangent minus residual",
+    "native-minus-extension forward difference",
+    "native-minus-independent-tangent-column c2 gradient",
+    "Taylor/dot diagnostics extracted unchanged from results.json"
+  ],
+  "scale_policy": "full array ranges; signed maps centred at zero; shared scales for comparable fields; no clipping",
+  "forbidden_transforms_not_used": [
+    "smoothing",
+    "gradient normalization",
+    "spatial interpolation",
+    "wavefield fabrication",
+    "native simulation",
+    "new AD"
+  ],
+  "limitations": [
+    "One-dimensional scalar fixture only; no 2D/3D or continuum-accuracy claim.",
+    "Only starting-model native displacement history was saved; no target-model wavefield is invented.",
+    "Processed objective formula/processing operator is absent from allowed artifacts; saved AD cotangent and its recorded verification are shown without reconstructing that objective.",
+    "Original timing samples/uncertainty are unavailable; no controlled speedup chart is made.",
+    "Numerical checks are historical saved evidence, not re-executed by this plotting-only application."
+  ],
+  "figures": [
+    {
+      "name": "01_models",
+      "title": "Actual model and starting discrepancy",
+      "caption": "Native starting and saved target velocities; no smoothing is inferred. Differences retain their physical coordinate and sign.",
+      "array_keys": [
+        "true_velocity",
+        "model_velocity",
+        "model_c2"
+      ],
+      "outputs": [
+        "01_models.png",
+        "01_models.pdf",
+        "01_models.svg"
+      ],
+      "statistics": {
+        "true_velocity": {
+          "shape": [
+            43
+          ],
+          "min": 1.1538651129118191,
+          "max": 1.566240124499157,
+          "l2": 9.297541241046366,
+          "finite": true
+        },
+        "model_velocity": {
+          "shape": [
+            43
+          ],
+          "min": 1.1826549303743452,
+          "max": 1.5736936367663126,
+          "l2": 9.303890482255197,
+          "finite": true
+        },
+        "model_c2": {
+          "shape": [
+            43
+          ],
+          "min": 1.3986726843387474,
+          "max": 2.476511662398783,
+          "l2": 13.349335232622263,
+          "finite": true
+        }
+      },
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.048212850241545896,
+            0.11571897018970191,
+            0.4379284541062798,
+            0.7517582655826557
+          ],
+          [
+            0.5584480676328497,
+            0.11571897018970191,
+            0.43792845410628056,
+            0.7517582655826557
+          ]
+        ],
+        "figure_inches": [
+          11.5,
+          4.1
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 6.434852650727407e-13,
+        "max_plot_height_difference_pt": 0.0,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "difference_statistics": {
+        "shape": [
+          43
+        ],
+        "min": -0.06361969793932953,
+        "max": 0.059605850495618506,
+        "l2": 0.29284513416417923,
+        "finite": true
+      }
+    },
+    {
+      "name": "02_native_wavefield",
+      "title": "Native displacement and source",
+      "caption": "All spatial nodes are retained. Four native indices share one full-history amplitude scale. The history includes u[0]=0, with post-update traces at u[t+1]. Receiver nodes are shown as rug marks; channels 3 and 4 both sample node 12.",
+      "array_keys": [
+        "main_history",
+        "source",
+        "receivers"
+      ],
+      "outputs": [
+        "02_native_wavefield.png",
+        "02_native_wavefield.pdf",
+        "02_native_wavefield.svg"
+      ],
+      "statistics": {
+        "main_history": {
+          "shape": [
+            151,
+            43
+          ],
+          "min": -0.5581772813939021,
+          "max": 0.570220107828036,
+          "l2": 9.95356507647598,
+          "finite": true
+        },
+        "source": {
+          "shape": [
+            150
+          ],
+          "min": -0.07126787163137326,
+          "max": 0.16,
+          "l2": 0.31024912324163184,
+          "finite": true
+        },
+        "receivers": {
+          "shape": [
+            9
+          ],
+          "min": 0.0,
+          "max": 42.0,
+          "l2": 73.9459261893446,
+          "finite": true
+        }
+      },
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.04471318518518519,
+            0.5419097222222222,
+            0.26184328454732514,
+            0.3901723611111112
+          ],
+          [
+            0.3609083215843622,
+            0.5419097222222222,
+            0.2618432845473249,
+            0.3901723611111112
+          ],
+          [
+            0.671353457983539,
+            0.5419097222222222,
+            0.2618432845473251,
+            0.3901723611111112
+          ],
+          [
+            0.04471318518518519,
+            0.05930597222222222,
+            0.26184328454732514,
+            0.39017236111111114
+          ],
+          [
+            0.3609083215843622,
+            0.05930597222222222,
+            0.2618432845473249,
+            0.39017236111111114
+          ],
+          [
+            0.671353457983539,
+            0.05930597222222222,
+            0.2618432845473251,
+            0.39017236111111114
+          ]
+        ],
+        "figure_inches": [
+          15.0,
+          8.0
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 2.398081733190338e-13,
+        "max_plot_height_difference_pt": 3.197442310920451e-14,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "native_indices": [
+        20,
+        50,
+        90,
+        150
+      ],
+      "native_times": [
+        6.0,
+        15.0,
+        27.0,
+        45.0
+      ],
+      "wavefield_display_limits": [
+        -0.570220107828036,
+        0.570220107828036
+      ],
+      "interpolation": "nearest cell display only, no new samples"
+    },
+    {
+      "name": "03_data_boundary",
+      "title": "Data, residual and actual AD cotangents",
+      "caption": "Observed and predicted gathers share a scale. Residual and L2 cotangent share another and are bitwise equal for the saved half-sum-squared objective. The processed cotangent is the actual saved AD VJP and differs from the residual. No processed objective formula is inferred.",
+      "array_keys": [
+        "observed",
+        "main_native_data",
+        "data_vjp_l2",
+        "data_vjp_processed",
+        "receivers"
+      ],
+      "outputs": [
+        "03_data_boundary.png",
+        "03_data_boundary.pdf",
+        "03_data_boundary.svg"
+      ],
+      "statistics": {
+        "observed": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.5439739881245603,
+          "max": 0.5018740957550601,
+          "l2": 3.9205551744731526,
+          "finite": true
+        },
+        "main_native_data": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.5581772813939021,
+          "max": 0.5227610881104446,
+          "l2": 4.140604323091739,
+          "finite": true
+        },
+        "data_vjp_l2": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.3999064046185558,
+          "max": 0.35309027839141316,
+          "l2": 3.449005498729829,
+          "finite": true
+        },
+        "data_vjp_processed": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.6337686985097782,
+          "max": 0.8528639971872017,
+          "l2": 6.158030072291728,
+          "finite": true
+        },
+        "receivers": {
+          "shape": [
+            9
+          ],
+          "min": 0.0,
+          "max": 42.0,
+          "l2": 73.9459261893446,
+          "finite": true
+        }
+      },
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.03404651851851853,
+            0.5395420915032679,
+            0.23181970244444444,
+            0.4000645751633989
+          ],
+          [
+            0.36775007407407406,
+            0.5395420915032679,
+            0.2318197024444441,
+            0.4000645751633989
+          ],
+          [
+            0.7014536296296292,
+            0.5395420915032679,
+            0.23181970244444472,
+            0.4000645751633989
+          ],
+          [
+            0.03404651851851853,
+            0.05581738562091503,
+            0.23181970244444444,
+            0.4000645751633987
+          ],
+          [
+            0.36775007407407406,
+            0.05581738562091503,
+            0.2318197024444441,
+            0.4000645751633987
+          ],
+          [
+            0.7014536296296292,
+            0.05581738562091503,
+            0.23181970244444472,
+            0.4000645751633987
+          ]
+        ],
+        "figure_inches": [
+          15.0,
+          8.5
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 6.59472476627343e-13,
+        "max_plot_height_difference_pt": 1.0191847366058937e-13,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "panel_scales": [
+        {
+          "panel": "Observed (saved target data)",
+          "limits": [
+            -0.5581772813939021,
+            0.5581772813939021
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.5439739881245603,
+            "max": 0.5018740957550601,
+            "l2": 3.9205551744731526,
+            "finite": true
+          }
+        },
+        {
+          "panel": "Predicted (native starting model)",
+          "limits": [
+            -0.5581772813939021,
+            0.5581772813939021
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.5581772813939021,
+            "max": 0.5227610881104446,
+            "l2": 4.140604323091739,
+            "finite": true
+          }
+        },
+        {
+          "panel": "Residual = predicted \u2212 observed",
+          "limits": [
+            -0.3999064046185558,
+            0.3999064046185558
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.3999064046185558,
+            "max": 0.35309027839141316,
+            "l2": 3.449005498729829,
+            "finite": true
+          }
+        },
+        {
+          "panel": "Saved AD cotangent: L2",
+          "limits": [
+            -0.3999064046185558,
+            0.3999064046185558
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.3999064046185558,
+            "max": 0.35309027839141316,
+            "l2": 3.449005498729829,
+            "finite": true
+          }
+        },
+        {
+          "panel": "Saved AD cotangent: processed",
+          "limits": [
+            -0.8528639971872017,
+            0.8528639971872017
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.6337686985097782,
+            "max": 0.8528639971872017,
+            "l2": 6.158030072291728,
+            "finite": true
+          }
+        },
+        {
+          "panel": "Processed cotangent \u2212 residual",
+          "limits": [
+            -0.5793287300464639,
+            0.5793287300464639
+          ],
+          "statistics": {
+            "shape": [
+              150,
+              9
+            ],
+            "min": -0.4221410941183862,
+            "max": 0.5793287300464639,
+            "l2": 3.3188053064413268,
+            "finite": true
+          }
+        }
+      ]
+    },
+    {
+      "name": "04_gradients",
+      "title": "Actual model gradients and independent difference",
+      "caption": "These are discrete per-node derivatives, not continuous kernel densities. Within each coordinate both objectives share a signed scale. Fixed endpoint derivatives are zero. The raw native-minus-independent comparison retains its own small scale.",
+      "array_keys": [
+        "gradient_c2_l2",
+        "gradient_c2_processed",
+        "gradient_velocity_l2",
+        "gradient_velocity_processed",
+        "gradient_log_velocity_l2",
+        "gradient_log_velocity_processed",
+        "tangent_column_gradient_c2"
+      ],
+      "outputs": [
+        "04_gradients.png",
+        "04_gradients.pdf",
+        "04_gradients.svg"
+      ],
+      "statistics": {
+        "gradient_c2_l2": {
+          "shape": [
+            43
+          ],
+          "min": -5.708350748951182,
+          "max": 2.7649831367964057,
+          "l2": 14.069136415858726,
+          "finite": true
+        },
+        "gradient_c2_processed": {
+          "shape": [
+            43
+          ],
+          "min": -9.602647984357688,
+          "max": 5.190430418568982,
+          "l2": 24.739312352920845,
+          "finite": true
+        },
+        "gradient_velocity_l2": {
+          "shape": [
+            43
+          ],
+          "min": -15.608539507227732,
+          "max": 6.540041878268384,
+          "l2": 38.9594302952065,
+          "finite": true
+        },
+        "gradient_velocity_processed": {
+          "shape": [
+            43
+          ],
+          "min": -26.25685018836419,
+          "max": 12.664292825246317,
+          "l2": 68.4200180927143,
+          "finite": true
+        },
+        "gradient_log_velocity_l2": {
+          "shape": [
+            43
+          ],
+          "min": -21.33948282640581,
+          "max": 7.831049707459443,
+          "l2": 54.503887505131516,
+          "finite": true
+        },
+        "gradient_log_velocity_processed": {
+          "shape": [
+            43
+          ],
+          "min": -35.897503633229086,
+          "max": 16.21617092313806,
+          "l2": 95.70865639675486,
+          "finite": true
+        },
+        "tangent_column_gradient_c2": {
+          "shape": [
+            43
+          ],
+          "min": -9.60264798435768,
+          "max": 5.19043041856898,
+          "l2": 24.739312352920837,
+          "finite": true
+        }
+      },
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.06318314814814815,
+            0.5507544581618657,
+            0.43546268518518494,
+            0.38586982167352524
+          ],
+          [
+            0.5610648148148146,
+            0.5507544581618657,
+            0.4354626851851854,
+            0.38586982167352524
+          ],
+          [
+            0.06318314814814815,
+            0.05857379972565158,
+            0.43546268518518494,
+            0.38586982167352557
+          ],
+          [
+            0.5610648148148146,
+            0.05857379972565158,
+            0.4354626851851854,
+            0.38586982167352557
+          ]
+        ],
+        "figure_inches": [
+          12.0,
+          8.1
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 3.836930773104541e-13,
+        "max_plot_height_difference_pt": 1.9424462038841738e-13,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "difference_statistics": {
+        "shape": [
+          43
+        ],
+        "min": -1.021405182655144e-14,
+        "max": 7.105427357601002e-15,
+        "l2": 1.911519057025217e-14,
+        "finite": true
+      },
+      "gradient_scaling": "none",
+      "smoothing": "none"
+    },
+    {
+      "name": "05_verification",
+      "title": "Data VJP, forward and dot verification",
+      "caption": "All data Taylor steps, including floor behavior, are retained. Forward discrepancy is shown on a dedicated zero-resolving scale. Saved dot tests use the predeclared tolerances in results.json. The plotting application independently checks trace/history sampling and raw-array equality.",
+      "array_keys": [
+        "main_native_data",
+        "main_extended_data"
+      ],
+      "outputs": [
+        "05_verification.png",
+        "05_verification.pdf",
+        "05_verification.svg"
+      ],
+      "statistics": {
+        "main_native_data": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.5581772813939021,
+          "max": 0.5227610881104446,
+          "l2": 4.140604323091739,
+          "finite": true
+        },
+        "main_extended_data": {
+          "shape": [
+            150,
+            9
+          ],
+          "min": -0.5581772813939021,
+          "max": 0.5227610881104446,
+          "l2": 4.140604323091739,
+          "finite": true
+        }
+      },
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.06359981481481482,
+            0.5517191798941797,
+            0.4327594365889935,
+            0.38359708994708996
+          ],
+          [
+            0.563768063411006,
+            0.5517191798941797,
+            0.43275943658899374,
+            0.38359708994708996
+          ],
+          [
+            0.06359981481481482,
+            0.0564818783068783,
+            0.4327594365889935,
+            0.38359708994708985
+          ],
+          [
+            0.563768063411006,
+            0.0564818783068783,
+            0.43275943658899374,
+            0.38359708994708985
+          ]
+        ],
+        "figure_inches": [
+          12.0,
+          8.4
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 1.9184653865522705e-13,
+        "max_plot_height_difference_pt": 6.714628852932948e-14,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "result_tests": [
+        "data_vjp_l2",
+        "data_vjp_processed",
+        "sampling_main",
+        "native_tangent_adjoint_main",
+        "sampling_boundary_small",
+        "native_tangent_adjoint_boundary_small",
+        "coordinate_tangent_adjoint_c2",
+        "coordinate_tangent_adjoint_velocity",
+        "coordinate_tangent_adjoint_log_velocity"
+      ],
+      "forward_difference_statistics": {
+        "shape": [
+          150,
+          9
+        ],
+        "min": 0.0,
+        "max": 0.0,
+        "l2": 0.0,
+        "finite": true
+      }
+    },
+    {
+      "name": "06_model_taylor_l2",
+      "title": "Full model Taylor sweeps: l2",
+      "caption": "Every saved step for all three model coordinates and both aligned/mixed directions is shown. Remainders, central errors, declared central tolerances and recorded roundoff floors remain visible; coarse nonmatching steps are retained. Complete raw values and Boolean gates remain in inputs/results.json.",
+      "array_keys": [],
+      "outputs": [
+        "06_model_taylor_l2.png",
+        "06_model_taylor_l2.pdf",
+        "06_model_taylor_l2.svg"
+      ],
+      "statistics": {},
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.06088131200719764,
+            0.6957873429951694,
+            0.4342228546594689,
+            0.25957410628019284
+          ],
+          [
+            0.5623046453405309,
+            0.6957873429951694,
+            0.4342228546594691,
+            0.25957410628019284
+          ],
+          [
+            0.06088131200719764,
+            0.3705218357487923,
+            0.4342228546594689,
+            0.25957410628019345
+          ],
+          [
+            0.5623046453405309,
+            0.3705218357487923,
+            0.4342228546594691,
+            0.25957410628019345
+          ],
+          [
+            0.06088131200719764,
+            0.04525632850241547,
+            0.4342228546594689,
+            0.2595741062801933
+          ],
+          [
+            0.5623046453405309,
+            0.04525632850241547,
+            0.4342228546594691,
+            0.2595741062801933
+          ]
+        ],
+        "figure_inches": [
+          12.0,
+          11.5
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 1.438849039914203e-13,
+        "max_plot_height_difference_pt": 5.055955654142963e-13,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "result_tests": [
+        "model_taylor_c2_l2_aligned",
+        "model_taylor_c2_l2_mixed",
+        "model_taylor_velocity_l2_aligned",
+        "model_taylor_velocity_l2_mixed",
+        "model_taylor_log_velocity_l2_aligned",
+        "model_taylor_log_velocity_l2_mixed"
+      ],
+      "all_steps_retained": true,
+      "display_floor_added": false
+    },
+    {
+      "name": "07_model_taylor_processed",
+      "title": "Full model Taylor sweeps: processed",
+      "caption": "Every saved step for all three model coordinates and both aligned/mixed directions is shown. Remainders, central errors, declared central tolerances and recorded roundoff floors remain visible; coarse nonmatching steps are retained. Complete raw values and Boolean gates remain in inputs/results.json.",
+      "array_keys": [],
+      "outputs": [
+        "07_model_taylor_processed.png",
+        "07_model_taylor_processed.pdf",
+        "07_model_taylor_processed.svg"
+      ],
+      "statistics": {},
+      "geometry": {
+        "axes_bounds_fraction": [
+          [
+            0.06088131200719764,
+            0.6957873429951694,
+            0.4342228546594689,
+            0.25957410628019284
+          ],
+          [
+            0.5623046453405309,
+            0.6957873429951694,
+            0.4342228546594691,
+            0.25957410628019284
+          ],
+          [
+            0.06088131200719764,
+            0.3705218357487923,
+            0.4342228546594689,
+            0.25957410628019345
+          ],
+          [
+            0.5623046453405309,
+            0.3705218357487923,
+            0.4342228546594691,
+            0.25957410628019345
+          ],
+          [
+            0.06088131200719764,
+            0.04525632850241547,
+            0.4342228546594689,
+            0.2595741062801933
+          ],
+          [
+            0.5623046453405309,
+            0.04525632850241547,
+            0.4342228546594691,
+            0.2595741062801933
+          ]
+        ],
+        "figure_inches": [
+          12.0,
+          11.5
+        ],
+        "text_outside_canvas": [],
+        "max_plot_width_difference_pt": 1.438849039914203e-13,
+        "max_plot_height_difference_pt": 5.055955654142963e-13,
+        "alignment_tolerance_pt": 1.5
+      },
+      "clipped_count": 0,
+      "clipped_fraction": 0.0,
+      "result_tests": [
+        "model_taylor_c2_processed_aligned",
+        "model_taylor_c2_processed_mixed",
+        "model_taylor_velocity_processed_aligned",
+        "model_taylor_velocity_processed_mixed",
+        "model_taylor_log_velocity_processed_aligned",
+        "model_taylor_log_velocity_processed_mixed"
+      ],
+      "all_steps_retained": true,
+      "display_floor_added": false
+    }
+  ],
+  "animations": [
+    {
+      "output": "native_wavefield.gif",
+      "array_key": "main_history",
+      "native_indices": [
+        0,
+        5,
+        10,
+        15,
+        20,
+        25,
+        30,
+        35,
+        40,
+        45,
+        50,
+        55,
+        60,
+        65,
+        70,
+        75,
+        80,
+        85,
+        90,
+        95,
+        100,
+        105,
+        110,
+        115,
+        120,
+        125,
+        130,
+        135,
+        140,
+        145,
+        150
+      ],
+      "times": [
+        0.0,
+        1.5,
+        3.0,
+        4.5,
+        6.0,
+        7.5,
+        9.0,
+        10.5,
+        12.0,
+        13.5,
+        15.0,
+        16.5,
+        18.0,
+        19.5,
+        21.0,
+        22.5,
+        24.0,
+        25.5,
+        27.0,
+        28.5,
+        30.0,
+        31.5,
+        33.0,
+        34.5,
+        36.0,
+        37.5,
+        39.0,
+        40.5,
+        42.0,
+        43.5,
+        45.0
+      ],
+      "time_units": "simulation T",
+      "fps": 10,
+      "temporal_selection_rule": "every fifth saved state including initial and final",
+      "spatial_selection": "all 43 native nodes",
+      "display_limits": [
+        -0.6443487218456806,
+        0.6443487218456806
+      ],
+      "clipped_count": 0,
+      "interpolation": "none; line connects native node samples",
+      "source_and_receivers_overlay": true
+    }
+  ],
+  "failures": [],
+  "plotting_source": {
+    "path": "plot_report.py",
+    "sha256": "f183f5f785e40c7d47cce9a132f6c707ac4c9994f9894b4ab16449b58aed66f6"
+  },
+  "output_hashes": {
+    "01_models.pdf": "a66b4f3e86820c89ca41c3d07c68e9f51290ab57b22d2642c1ab5e10a69b7de6",
+    "01_models.png": "75a85491868472684bd037234c2ba511e9a11b0bf77cc457848142e132649f1d",
+    "01_models.svg": "69ca4fdc9ca6b8879a994adb50d646f427e2bf8ef0f39f5202311fe9e907a0c4",
+    "02_native_wavefield.pdf": "414fc66ae8e0294c2769f8add1c51680fec4da7b397ac4657f99508c5ae50fd1",
+    "02_native_wavefield.png": "fa9dc6f10c9063eb1343de5ac9ee6646377b6f7499735f016a1b11566c79b275",
+    "02_native_wavefield.svg": "2819f5ca4aa8f6845a539179388102d4c8d4a3175cce0652389bc23e9a10a396",
+    "03_data_boundary.pdf": "a807265a49ed3a665928febeee4bdedeced3539cdb691cb3a24d298294702a41",
+    "03_data_boundary.png": "84b66fbe36987d235a69b2e1d449a9bb777a3644d84fccdba7cbe729b6de9c8e",
+    "03_data_boundary.svg": "fb62872c8950437746e6f7f389a832d96c9994f01805df1dd2173d528298d6c3",
+    "04_gradients.pdf": "c6a46651f6a581dc1f5a702a768b483aec422517017a03e19356610139f29493",
+    "04_gradients.png": "e3a31726b3910fd96089e00e209132fc3dff752335c7d718e7870774f8ab09ee",
+    "04_gradients.svg": "2acec8e2a189a8b89a9ece32b27714aecb46f505fa2daf0a16df371387aae054",
+    "05_verification.pdf": "27906e85a04159d3f3ad1fc0e2dfad1fdd7bf8107f386cf00c4a6c2ab729bf57",
+    "05_verification.png": "fcfede799b0fe3141f8411d6f3025f2e0c502c4da801ddabd0b525cdb93841a1",
+    "05_verification.svg": "4a4f69c11a63c60d492df6daec71eb5160b3ee5d199ac901275cade9f4729976",
+    "06_model_taylor_l2.pdf": "a7dca16ac32499f35fe55f0dc7e1f668f109c9eaa304fbdfdeaf32ad17d29e76",
+    "06_model_taylor_l2.png": "7138065e6558673e73577cf4ae1c91886b38c09247d1ebc2b730b16d2e0e51d2",
+    "06_model_taylor_l2.svg": "fa43b557fd198133ba923a7bc1cab1c73605f29939e41ee3fa9404c293e2339d",
+    "07_model_taylor_processed.pdf": "5a08eeae3a1d8d779c1badb26bd46eeb3f1af1470114c47b014a6397ea6e7304",
+    "07_model_taylor_processed.png": "718189a90891d93a0bbddc4a1d90f76ef16981932ff865e26c487171fddd047a",
+    "07_model_taylor_processed.svg": "38318a9e04fc4fd0751b7c57a14d3a5e78bdbf154be404c3f1b59ca76fac3dd0",
+    "native_wavefield.gif": "659147bd50d524fe40e906669ef6ea7cdbe0658aa110dfbaf4808539f30330d1"
+  }
+}

@@ -1,0 +1,3 @@
+# Preserve generated SVG bytes and their recorded hashes; XML permits trailing spaces.
+docs/**/*.svg whitespace=-blank-at-eol
+evaluations/visualization_forward_test/**/*.svg whitespace=-blank-at-eol

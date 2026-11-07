@@ -1,6 +1,6 @@
 ---
 name: differentiate-seismic-solver
-description: Add and verify a differentiable inversion interface to an existing high-performance seismic forward solver with accessible source, using data-domain AD and a consistent adjoint while preserving native numerical kernels and execution. Use for a missing differentiable interface, rather than benchmarking a solver that is already fully differentiable.
+description: Add and verify a differentiable inversion interface to an existing high-performance seismic forward source solver, using data-domain AD and a native adjoint. Deliver model, wavefield, data and gradient visualizations alongside numerical checks while preserving native kernels and execution. Use for a missing differentiable interface, not an already differentiable framework benchmark.
 ---
 
 # Differentiate an existing seismic solver
@@ -37,7 +37,15 @@ Use the reusable functions or CLI in [scripts/numerics.py](scripts/numerics.py) 
 
 ## Package the result
 
-Keep the adapter, runnable native input, objective example, tests, source/build provenance and exact reproduction commands together. Follow [the application record](references/application-record.md): retain failed attempts and target-specific repairs, not only the final success. Record supported and unsupported configurations explicitly.
+Deliver a visual report, not only text or a numerical pass flag. Read [visualization deliverables](references/visualization-deliverables.md): show the actual target and starting model, native wavefields, receiver data/residuals and AD cotangent, model gradients in their true coordinates, and numerical verification. Put a small gallery and configuration/result tables near the top of the repository README; keep detailed provenance and failures linked below. Include a reproducible plotting command, physical units, shared comparison scales and source/figure manifests. A waveform image never replaces quantitative correctness gates.
+
+The optional self-contained [visualization helper](scripts/visualize.py) renders array maps, scattered native points, curves, regional bars and sampled wavefield animations from NPZ plus a JSON specification. Use custom native-aware plotting when it better represents the discretization; no common solver architecture or export schema is mandatory. Never invent wavefields or turn a few regional derivatives into an apparent spatial kernel.
+
+![Example: actual model, native state and gradient](assets/visual-example.png)
+
+This example uses actual outputs of a compiled one-dimensional wave fixture, in declared simulation units. It illustrates the deliverable, not a target solver or a continuum-accuracy claim; [its provenance](assets/visual-example.json) is included. Replace the example with actual application outputs.
+
+Keep the adapter, runnable native input, objective example, tests, visual report, source/build provenance and exact reproduction commands together. Follow [the application record](references/application-record.md): retain failed attempts and target-specific repairs, not only the final success. Record supported and unsupported configurations explicitly.
 
 After correctness, compare the native and extended phases with matched source/configuration and history policies. Separate complete gradient time from failed-attempt time, GPU allocation from device/process totals, and host RAM from GPU RAM. A reduced fallback is a separate matched case; it does not replace the original capacity outcome.
 

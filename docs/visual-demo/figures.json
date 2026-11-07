@@ -1,0 +1,171 @@
+{
+  "figures": [
+    {
+      "name": "visual-example",
+      "title": "Model, native state and derivative are visible deliverables",
+      "caption": "Actual arrays from the compiled 1-D scalar-wave development fixture. The starting model is not called blurred: no smoothing was used. The history includes the zero initial state. The raw gradient is data AD followed by the native C++ adjoint and a static material-map VJP; no display smoothing or clipping. This is a workflow example, not a geophysical accuracy or HPC benchmark.",
+      "columns": 3,
+      "panels": [
+        {
+          "kind": "curves",
+          "label": "Actual target and starting model",
+          "series": [
+            {
+              "x": "x",
+              "y": "true_velocity",
+              "label": "Target"
+            },
+            {
+              "x": "x",
+              "y": "model_velocity",
+              "label": "Starting"
+            }
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Velocity (simulation units)"
+        },
+        {
+          "kind": "map",
+          "key": "main_history",
+          "label": "Native displacement history",
+          "units": "Displacement (simulation units)",
+          "extent": [
+            0,
+            42,
+            45,
+            0
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true
+        },
+        {
+          "kind": "curves",
+          "label": "Raw native-adjoint gradient",
+          "series": [
+            {
+              "x": "x",
+              "y": "gradient_velocity_l2",
+              "label": "L2 objective"
+            }
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Derivative with respect to velocity"
+        }
+      ]
+    },
+    {
+      "name": "data-boundary",
+      "title": "The actual AD cotangent reaches the native boundary",
+      "caption": "Actual target/prediction, residual and processed-objective receiver derivative. Cotangent and residual have separately labelled scales; they are different quantities.",
+      "columns": 2,
+      "panels": [
+        {
+          "kind": "map",
+          "key": "observed",
+          "label": "Target data",
+          "units": "Discrete data units",
+          "extent": [
+            0,
+            9,
+            45,
+            0.3
+          ],
+          "xlabel": "Receiver index (duplicates included)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true,
+          "scale_group": "receiver_data"
+        },
+        {
+          "kind": "map",
+          "key": "main_native_data",
+          "label": "Starting-model prediction",
+          "units": "Discrete data units",
+          "extent": [
+            0,
+            9,
+            45,
+            0.3
+          ],
+          "xlabel": "Receiver index (duplicates included)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true,
+          "scale_group": "receiver_data"
+        },
+        {
+          "kind": "map",
+          "key": "residual",
+          "label": "Prediction minus target",
+          "units": "Discrete data units",
+          "extent": [
+            0,
+            9,
+            45,
+            0.3
+          ],
+          "xlabel": "Receiver index (duplicates included)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true
+        },
+        {
+          "kind": "map",
+          "key": "data_vjp_processed",
+          "label": "Processed-objective data VJP",
+          "units": "Objective derivative / data unit",
+          "extent": [
+            0,
+            9,
+            45,
+            0.3
+          ],
+          "xlabel": "Receiver index (duplicates included)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true
+        }
+      ]
+    },
+    {
+      "name": "gradient-verification",
+      "title": "Raw multi-epsilon checks remain inspectable",
+      "caption": "Every retained positive first-order remainder in the actual aligned-velocity Taylor sweep is plotted, including the smallest steps. No step selection or fitted rescaling.",
+      "columns": 2,
+      "panels": [
+        {
+          "kind": "curves",
+          "label": "Velocity Taylor check: l2",
+          "series": [
+            {
+              "x": "h_l2",
+              "y": "e_l2",
+              "label": "First-order Taylor remainder"
+            }
+          ],
+          "xlabel": "Step size",
+          "ylabel": "Absolute remainder",
+          "xscale": "log",
+          "yscale": "log"
+        },
+        {
+          "kind": "curves",
+          "label": "Velocity Taylor check: processed",
+          "series": [
+            {
+              "x": "h_processed",
+              "y": "e_processed",
+              "label": "First-order Taylor remainder"
+            }
+          ],
+          "xlabel": "Step size",
+          "ylabel": "Absolute remainder",
+          "xscale": "log",
+          "yscale": "log"
+        }
+      ]
+    }
+  ]
+}

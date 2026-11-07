@@ -14,6 +14,7 @@ Record these fields where applicable:
 - AD data-objective checks, native-forward discrepancy, transpose tests, complete Taylor sweeps and raw gradients;
 - temporal-AD/replay route, stored history and complete resource measurements;
 - exact reproduction commands, package dependencies, scope and remaining failures.
+- figure/animation inventory and plotting commands, input hashes, actual model/state/gradient coordinates and units, smoothing/display transforms, selected native times, clipping/aggregation policy, README gallery and rendered QA outcome.
 
 Use statuses such as `planned`, `attempted`, `failed`, and `passed` for individual gates. A build or a zero exit code is not a numerical pass. Unsupported parameters should be rejected or clearly excluded, not returned as zero gradients.
 

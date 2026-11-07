@@ -1,0 +1,45 @@
+{
+  "completed": true,
+  "frozen_candidate_pre_post_verified": true,
+  "candidate_sha256": "51b19130b19625fb074f76db5165e6517d662a61079723e0381d62bfb96f947a",
+  "generated_plates": 7,
+  "generated_animations": 1,
+  "editable_formats": [
+    "PDF",
+    "SVG"
+  ],
+  "inspected_all_png_plates": true,
+  "inspected_pdf_renders": true,
+  "inspected_gif_sample_frames": [
+    0,
+    10,
+    20,
+    30
+  ],
+  "actual_native_arrays_used": true,
+  "native_simulation_runs": 0,
+  "ad_implementations": 0,
+  "portable_helper_used": false,
+  "custom_plotting_rationale": "The real native case is 1D; custom curves and a line-state animation preserve this honestly. The portable helper is optional and its animations support map/points only.",
+  "visual_deliverable_requirement_clear_and_actionable": true,
+  "instruction_strengths": [
+    "Actual target/start/native state and AD cotangent required explicitly",
+    "True parameter coordinates and temporal sampling conventions required",
+    "No invented wavefields or regional-to-spatial derivatives",
+    "Shared comparison scales, unclipped statistics and reproducible manifests",
+    "README gallery and inspection of rendered exports"
+  ],
+  "limitations": [
+    "One-dimensional scalar fixture only; no 2D/3D or continuum-accuracy claim.",
+    "Only starting-model native displacement history was saved; no target-model wavefield is invented.",
+    "Processed objective formula/processing operator is absent from allowed artifacts; saved AD cotangent and its recorded verification are shown without reconstructing that objective.",
+    "Original timing samples/uncertainty are unavailable; no controlled speedup chart is made.",
+    "Numerical checks are historical saved evidence, not re-executed by this plotting-only application."
+  ],
+  "retained_warnings": [
+    "Fontconfig cache warning, output successful; subsequent run uses writable XDG cache",
+    "Initial canvas audit false positive for undrawn off-axis ticks, repaired with original audit retained"
+  ],
+  "all_output_hashes_verified": true,
+  "main_saved_recurrence_absolute_linf": 1.1102230246251565e-16
+}

@@ -1,0 +1,40 @@
+{
+  "visualization_skill_version": "0.2.0",
+  "packet_sha256": "51b19130b19625fb074f76db5165e6517d662a61079723e0381d62bfb96f947a",
+  "original_numerical_adaptation_skill_version": "0.1.0",
+  "original_packet_sha256": "b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f",
+  "independent_forward_test": "visualization_forward_test/assessment.json",
+  "helper_tests": "4 passed; suite total30 before final layout correction; Linux CI reruns fullsuite",
+  "plots": "All native application and comparison galleries preserve original numerical/source provenance; follow-up visualization scripts do not change solver kernels.",
+  "declared_portable_helper_limit": "map/points animations; a 1-D native state can use custom honest curves/line animation",
+  "created_utc": "2026-11-07T01:17:42.254323+00:00",
+  "repositories": {
+    "HybridADFWI-Open": {
+      "visualization_commit": "f00e4faa4cd65317f14afd2f520a6a35830fd33f",
+      "release": "v0.2.0",
+      "plates": 6,
+      "animation_frames": 80,
+      "report": "https://github.com/Wangxi404/HybridADFWI-Open/blob/v0.2.0/docs/VISUAL_REPORT.md",
+      "numerical_solver_changes": false,
+      "qa": "all rendered alignment/font/collision audits passed"
+    },
+    "DiffSPECFEM": {
+      "visualization_commit": "39740708f15fcb1564222cd78225c4a37c91fdef",
+      "release": "v0.2.0",
+      "plates": 5,
+      "animation_frames": 44,
+      "report": "https://github.com/Wangxi404/DiffSPECFEM/blob/v0.2.0/VISUAL_REPORT.md",
+      "numerical_solver_changes": false,
+      "qa": "all rendered alignment/font/collision audits passed"
+    },
+    "DiffAxiSEM3D": {
+      "visualization_commit": "ec8780c50401fcff93074c72f22d34b901f49853",
+      "release": "v0.2.0",
+      "plates": 6,
+      "animation_frames": 82,
+      "report": "https://github.com/Wangxi404/DiffAxiSEM3D/blob/v0.2.0/docs/gallery/README.md",
+      "numerical_solver_changes": false,
+      "qa": "all rendered alignment/font/collision audits passed"
+    }
+  }
+}

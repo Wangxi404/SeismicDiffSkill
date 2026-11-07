@@ -1,0 +1,42 @@
+[
+  {
+    "file": "marmousi-models.png",
+    "source_repository": "https://github.com/Wangxi404/HybridADFWI-Open",
+    "source_commit": "84c6035b9e5f064066cce1aee70049e3c4cdc993",
+    "source_path": "docs/figures/models.png",
+    "sha256": "4bc993059f0ee53dc9bcfdf771a638c8666b66aec32ef4a34fd63c5f753b1791",
+    "terms": "MIT code; Marmousi-II data attribution/terms remain separate"
+  },
+  {
+    "file": "marmousi-gradients.png",
+    "source_repository": "https://github.com/Wangxi404/HybridADFWI-Open",
+    "source_commit": "84c6035b9e5f064066cce1aee70049e3c4cdc993",
+    "source_path": "docs/figures/gradients.png",
+    "sha256": "ec44f61aa35608d3c64766c810b2d729600b583aad6a54e27bd899a3fc46b4f8",
+    "terms": "MIT code; source-data provenance in comparison project"
+  },
+  {
+    "file": "native-sh-wavefield.gif",
+    "source_repository": "https://github.com/Wangxi404/DiffSPECFEM",
+    "source_commit": "ba82f04de0d190fce6b75b968b9219bd9ad52ae1",
+    "source_path": "figures/native_sh_wavefield.gif",
+    "sha256": "457fdbac76bb84274def29f65742508844e313ea0e567f83cbbd9559870adaf0",
+    "terms": "GPL-3.0-or-later"
+  },
+  {
+    "file": "native-spatial-gradients.png",
+    "source_repository": "https://github.com/Wangxi404/DiffSPECFEM",
+    "source_commit": "ba82f04de0d190fce6b75b968b9219bd9ad52ae1",
+    "source_path": "figures/04_spatial_gradients.png",
+    "sha256": "f2b68acf78bdbe483e91a28e109e0fd4cd2a050ccd8572d4eb38dea579db1225",
+    "terms": "GPL-3.0-or-later"
+  },
+  {
+    "file": "native-mpi-remap.png",
+    "source_repository": "https://github.com/Wangxi404/DiffAxiSEM3D",
+    "source_commit": "4a92c650e0d798c00ba32ba917576a3f44e85bef",
+    "source_path": "docs/gallery/06-mpi-history-remap.png",
+    "sha256": "e529bb2e51751230cb2d22942bb08e2f98ab695ab1ac05f3db5bc6cdbe43b977",
+    "terms": "MIT"
+  }
+]

@@ -1,29 +1,70 @@
-# Seismic differentiation skill
+# SeismicDiffSkill
 
-A reusable Codex skill for adapting an existing seismic forward **source** solver to differentiable inversion: data-domain AD supplies a cotangent, and a consistent native discrete adjoint supplies the propagation VJP. It is not tailored to named solvers and does not target a framework that is already fully differentiable.
+Make an existing high-performance seismic **source** solver usable in differentiable inversion: data AD supplies the actual objective VJP, and a consistent native adjoint supplies the propagation VJP. Preserve native numerical kernels/execution and deliver **visual evidence alongside numerical checks**. The skill is solver-independent; an already differentiable framework is a separate comparison.
 
-The canonical package is `skills/differentiate-seismic-solver/`. It contains the instructions, derivative contract, numerical acceptance criteria and reusable numerical checks. Target-specific adapters and their tests remain independent software projects.
+![Actual native SH wavefield](docs/gallery/native-sh-wavefield.gif)
 
-Development uses general numerical fixtures and lessons from the separate HybridADFWI comparison. Full packet snapshots are frozen before applications to independent solver repositories. A version/hash identifies the instructions and tools used; application retries and source changes are recorded separately. The first frozen packet is `releases/v0.1.0/skill` (SHA256 `b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f`). See `evaluations/` for development evidence and subsequent application records.
+Actual native two-rank history, shared amplitude scale and physical geometry. This is an application example, not a solver-specific recipe inside the skill.
 
-This repository's synthetic compiled fixture tests the workflow itself. It is not a substitute for a real HPC solver validation or a performance benchmark. A published numerical claim requires its actual native build, configuration and raw verification record.
+| Actual target and starting model | Native coefficient sensitivities |
+| --- | --- |
+| [![True and smoothed Marmousi models](docs/gallery/marmousi-models.png)](docs/gallery/README.md) | [![Native spatial contributions](docs/gallery/native-spatial-gradients.png)](docs/gallery/README.md) |
+| Separate HybridADFWI comparison: actual Gaussian-smoothed velocities and restored true water. | Raw SEM contributions with declared quadrature and parameter coordinates. |
+| **Matched gradients** | **MPI history identity** |
+| [![Native AD and hybrid gradients](docs/gallery/marmousi-gradients.png)](docs/gallery/README.md) | [![Actual changed partitions](docs/gallery/native-mpi-remap.png)](docs/gallery/README.md) |
+| Same starting point, shared scales; differences have a separate scale. | Global tags connect forward history to a different adjoint partition. |
 
-Install utility-test dependencies with `python -m pip install -r requirements-dev.txt`, then run `python -m pytest tests -q`. The compiled development application additionally needs a C++17 compiler and PyTorch; run `PYTHON=/path/to/torch-python evaluations/generic_forward_test/reproduce.sh`. Skill format is also checked with Codex's `skill-creator/scripts/quick_validate.py`. Freeze/verify tooling lives in `tools/` and never silently overwrites an existing frozen version.
+[Full gallery / attribution](docs/gallery/README.md) · [Portable renderer example](docs/visual-demo/README.md) · [Application records](evaluations/applications.json) · [Independent reviews](evaluations/reviews/)
 
-## Install the frozen skill
+## What the skill must deliver
 
-Copy `releases/v0.1.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, or link that directory. The frozen packet includes its own MIT license. Verify it with `python tools/freeze.py verify releases/v0.1.0 --expected-sha256 b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f`.
+| Evidence | Required output |
+| --- | --- |
+| Model | Actual target/starting model and differences; name smoothing only when used |
+| Native wavefield | Time snapshots, geometry/components/units; animation when feasible |
+| AD boundary | Prediction, observation, residual and actual objective cotangent |
+| Derivative | Raw coefficient/model gradients; bars for regional parameters |
+| Correctness | Native comparisons, full dot/Taylor sweeps, failures and numerical floors |
+| Resources, if measured | Matched time/memory and all repeat points |
 
-## Validation status
+Each gallery includes plotting source, a reproduction command and source/figure manifests. Shared scales, clipping and aggregation are explicit. A waveform picture never replaces a numerical check. Read the [visualization contract](skills/differentiate-seismic-solver/references/visualization-deliverables.md).
 
-The frozen generic packet passed 26 utility tests and an independent compiled scalar-wave source adaptation (43 numerical/API gates; original failed check retained). This is a development fixture.
+## Install and use
 
-[DiffSPECFEM](https://github.com/Wangxi404/DiffSPECFEM) is now validated and published: native SH/Newmark, four regional log-density/log-Vs coordinates, one/two MPI ranks, with an additional 32x32 mesh tested on two MPI ranks. Original and extended native outputs are bitwise identical; actual native sampling, processed AD sources, raw GLL kernels and multi-epsilon model checks passed independent raw-artifact audit.
+Current visual-delivery skill: **v0.2.0**. Copy `releases/v0.2.0/skill` to `~/.codex/skills/differentiate-seismic-solver`, or link it. Invoke `$differentiate-seismic-solver` with a source solver and small native example. Editable package: `skills/differentiate-seismic-solver/`.
 
-[DiffAxiSEM3D](https://github.com/Wangxi404/DiffAxiSEM3D) is validated and published: native Nr=1/m=0 solid, two layer factors scaling lambda/mu together, one/two MPI ranks, plus a 16x16 refinement case. Actual changed forward/adjoint partitions are handled by global-tag history remapping. Full L2/processed objective, model/propagation/sampling dot/Taylor checks and an outer PyTorch parameter map passed independent raw/history audit. Refined strict native-forward preservation uses a separately labelled matched NR-partition control; production derivatives keep COST partitioning.
+Optional NumPy/Matplotlib/Pillow renderer:
 
-These are bounded native derivative validations, not all-physics or continuum-convergence claims. Both applications used the exact same frozen packet. Their failed attempts, target-specific reviews/repairs, source pins, parameter coordinates and complete reports are recorded in `evaluations/applications.json` and `evaluations/reviews/`. HybridADFWI is a separate full-AD comparison, not a skill target.
+```bash
+python skills/differentiate-seismic-solver/scripts/visualize.py \
+  --arrays case.npz --spec figures.json --output figures
+```
 
-## Comparison implementation
+Exports PNG/PDF/SVG, optional native-frame GIFs, scale/clipping statistics and a Markdown report. It does not run a solver, invent fields, smooth gradients or force one adapter architecture; native-aware custom plotting remains valid.
 
-[HybridADFWI](https://github.com/Wangxi404/HybridADFWI-Open) is published separately with correctness tests, matched full-AD/adjoint measurements and raw kernel evidence. It is a comparison for an already differentiable solver, not an application of this frozen skill. The original private development repository and unpublished manuscript are kept separate from the clean public export.
+## Versions and evidence
+
+| Version / project | Role and verified scope |
+| --- | --- |
+| Frozen v0.1.0 | Original adaptation packet; 26 utility checks and 43 independent compiled-fixture gates |
+| v0.2.0 | Required visual report, real embedded example, portable renderer; four new artifact/integrity tests and independent 7-plate + GIF visual report |
+| [DiffSPECFEM](https://github.com/Wangxi404/DiffSPECFEM) | v0.1.0 application: native SH, regional logρ/logVs, ranks 1/2, additional 32×32 case |
+| [DiffAxiSEM3D](https://github.com/Wangxi404/DiffAxiSEM3D) | v0.1.0 application: Nr1/m0 solid, two common λ/μ layer factors, ranks 1/2, 16×16 case and actual repartition |
+| [HybridADFWI](https://github.com/Wangxi404/HybridADFWI-Open) | Separate already-differentiable ADFWI comparison; **not a skill target** |
+
+Both native applications used the **same frozen v0.1.0 packet**, before this visual follow-up. They are not relabelled as v0.2.0 numerical adaptations. Both passed independent native/raw-history reviews, real processed-objective AD, model/propagation/sampling dot/Taylor checks. Refined strict forward preservation in the second application uses a separately labelled matched NR-partition control; derivatives retain COST partitioning. Scope, source pins and repair inputs are in the reports. These results establish neither all-physics support nor continuum convergence, universal adaptation speed or a causal no-skill comparison.
+
+## Reproduction and integrity
+
+```bash
+python -m pip install -r requirements-dev.txt
+python -m pytest tests -q
+python tools/freeze.py verify releases/v0.1.0 \
+  --expected-sha256 b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f
+```
+
+Verify the visual-delivery packet with `python tools/freeze.py verify releases/v0.2.0 --expected-sha256 51b19130b19625fb074f76db5165e6517d662a61079723e0381d62bfb96f947a`. The independent [visualization forward-test report](evaluations/visualization_forward_test/README.md) retains its actual outputs and limitations.
+
+Manifests cover the complete packet: instructions, references, helpers, assets, license and UI metadata. Adapters/reviews stay outside it. Changes create new versions; old freezes are never overwritten. Native fixture reproduction additionally needs C++17 and PyTorch: `PYTHON=/path/to/torch-python evaluations/generic_forward_test/reproduce.sh`.
+
+Generic skill: MIT. Gallery assets retain source terms in [SOURCES.json](docs/gallery/SOURCES.json); Marmousi-II provenance/terms are separate. The original private comparison history and manuscript are not included in its clean public export.

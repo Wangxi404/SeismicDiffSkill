@@ -17,3 +17,5 @@ jobs:
       - run: python -m pytest tests -q
       - name: Verify the complete frozen packet
         run: python tools/freeze.py verify releases/v0.1.0 --expected-sha256 b09e0ee57324f715b80178c2a30cb26a2140b1ea3d5545ad8b15dc5680dca49f
+      - name: Verify visual-delivery packet
+        run: python tools/freeze.py verify releases/v0.2.0 --expected-sha256 51b19130b19625fb074f76db5165e6517d662a61079723e0381d62bfb96f947a

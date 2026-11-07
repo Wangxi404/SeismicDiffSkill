@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "transforms": "No smoothing, spatial interpolation, gradient normalization or array exclusion",
+  "source": {
+    "kind": "saved compiled-native fixture outputs",
+    "input_sha256": "4377c34fd2b56ca54a2218acf210b0e1ebb1f619cf034d46106cff4c61f02191",
+    "input": "evaluations/generic_forward_test/raw_arrays.npz",
+    "native_source_sha256": "07bf9bfa81994d2f08febcfaf5a586210ddd1d9f01012e38a5b22eab77afe578",
+    "new_solver_runs": 0
+  },
+  "example": {
+    "name": "visual-example",
+    "caption": "Actual arrays from the compiled 1-D scalar-wave development fixture. The starting model is not called blurred: no smoothing was used. The history includes the zero initial state. The raw gradient is data AD followed by the native C++ adjoint and a static material-map VJP; no display smoothing or clipping. This is a workflow example, not a geophysical accuracy or HPC benchmark.",
+    "panels": [
+      {
+        "spec": {
+          "kind": "curves",
+          "label": "Actual target and starting model",
+          "series": [
+            {
+              "x": "x",
+              "y": "true_velocity",
+              "label": "Target"
+            },
+            {
+              "x": "x",
+              "y": "model_velocity",
+              "label": "Starting"
+            }
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Velocity (simulation units)"
+        },
+        "raw_statistics": {
+          "series": [
+            {
+              "x": {
+                "shape": [
+                  43
+                ],
+                "min": 0.0,
+                "max": 42.0,
+                "l2": 159.95311813153253,
+                "count": 43
+              },
+              "y": {
+                "shape": [
+                  43
+                ],
+                "min": 1.1538651129118191,
+                "max": 1.566240124499157,
+                "l2": 9.297541241046366,
+                "count": 43
+              }
+            },
+            {
+              "x": {
+                "shape": [
+                  43
+                ],
+                "min": 0.0,
+                "max": 42.0,
+                "l2": 159.95311813153253,
+                "count": 43
+              },
+              "y": {
+                "shape": [
+                  43
+                ],
+                "min": 1.1826549303743452,
+                "max": 1.5736936367663126,
+                "l2": 9.303890482255197,
+                "count": 43
+              }
+            }
+          ]
+        }
+      },
+      {
+        "spec": {
+          "kind": "map",
+          "key": "main_history",
+          "label": "Native displacement history",
+          "units": "Displacement (simulation units)",
+          "extent": [
+            0,
+            42,
+            45,
+            0
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Time (simulation units)",
+          "aspect": "auto",
+          "symmetric": true
+        },
+        "raw_statistics": {
+          "shape": [
+            151,
+            43
+          ],
+          "min": -0.5581772813939021,
+          "max": 0.570220107828036,
+          "l2": 9.95356507647598,
+          "count": 6493,
+          "display_limits": [
+            -0.570220107828036,
+            0.570220107828036
+          ],
+          "clipped_count": 0,
+          "clipped_fraction": 0.0
+        }
+      },
+      {
+        "spec": {
+          "kind": "curves",
+          "label": "Raw native-adjoint gradient",
+          "series": [
+            {
+              "x": "x",
+              "y": "gradient_velocity_l2",
+              "label": "L2 objective"
+            }
+          ],
+          "xlabel": "Position (grid units)",
+          "ylabel": "Derivative with respect to velocity"
+        },
+        "raw_statistics": {
+          "series": [
+            {
+              "x": {
+                "shape": [
+                  43
+                ],
+                "min": 0.0,
+                "max": 42.0,
+                "l2": 159.95311813153253,
+                "count": 43
+              },
+              "y": {
+                "shape": [
+                  43
+                ],
+                "min": -15.608539507227732,
+                "max": 6.540041878268384,
+                "l2": 38.9594302952065,
+                "count": 43
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "layout": {
+      "plot_area_bounds_fraction": [
+        [
+          0.1,
+          0.22999999999999998,
+          0.1727272727272727,
+          0.6
+        ],
+        [
+          0.39363636363636356,
+          0.22999999999999998,
+          0.17272727272727273,
+          0.6
+        ],
+        [
+          0.6872727272727271,
+          0.22999999999999998,
+          0.17272727272727273,
+          0.6
+        ]
+      ],
+      "figure_inches": [
+        11.399999999999999,
+        3.5
+      ],
+      "tolerance_pt": 1.5,
+      "external_alignment_audit": true
+    }
+  },
+  "reproduction": "tools/render_visual_demo.py from the full repository"
+}

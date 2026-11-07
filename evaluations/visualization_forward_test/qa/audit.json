@@ -1,0 +1,95 @@
+{
+  "pdfs": [
+    {
+      "pdf": "01_models.pdf",
+      "pages": 1,
+      "text_span_count": 30,
+      "text_characters": 328,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        828.0,
+        295.20001220703125
+      ]
+    },
+    {
+      "pdf": "02_native_wavefield.pdf",
+      "pages": 1,
+      "text_span_count": 99,
+      "text_characters": 986,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        1080.0,
+        576.0
+      ]
+    },
+    {
+      "pdf": "03_data_boundary.pdf",
+      "pages": 1,
+      "text_span_count": 171,
+      "text_characters": 1427,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        1080.0,
+        612.0
+      ]
+    },
+    {
+      "pdf": "04_gradients.pdf",
+      "pages": 1,
+      "text_span_count": 69,
+      "text_characters": 763,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        864.0,
+        583.2000122070312
+      ]
+    },
+    {
+      "pdf": "05_verification.pdf",
+      "pages": 1,
+      "text_span_count": 95,
+      "text_characters": 1009,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        864.0,
+        604.7999877929688
+      ]
+    },
+    {
+      "pdf": "06_model_taylor_l2.pdf",
+      "pages": 1,
+      "text_span_count": 183,
+      "text_characters": 1580,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        864.0,
+        828.0
+      ]
+    },
+    {
+      "pdf": "07_model_taylor_processed.pdf",
+      "pages": 1,
+      "text_span_count": 183,
+      "text_characters": 1587,
+      "text_outside_page": [],
+      "pdf_size_pt": [
+        864.0,
+        828.0
+      ]
+    }
+  ],
+  "gif": {
+    "frames": 31,
+    "size_px": [
+      1000,
+      450
+    ],
+    "sampled_display_frames": [
+      0,
+      10,
+      20,
+      30
+    ]
+  },
+  "canvas_outside_text_count": 0
+}
